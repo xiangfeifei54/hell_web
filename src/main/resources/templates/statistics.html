@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>今日课程</title>
+</head>
+<body>
+<h2>今日课程统计</h2>
+<ul th:each="sub:${courseData.getSubjectMap().entrySet()}">
+
+    <li>
+        <a th:href="'/subject?subject_id=' + ${sub.getValue().getId()}">
+            <span th:text="${sub.getValue().getName()+'(' + sub.getValue().getCount() + ')'}"></span>
+        </a>
+    </li>
+</ul>
+<h2>历史统计</h2>
+<ul th:each="sub:${history.entrySet()}">
+    <li>
+        <a th:href="'/history?day_key=' + ${sub.getKey()} + ''">
+            <span th:text="${sub.getKey()}"></span>
+        </a>
+    </li>
+</ul>
+<hr/>
+</body>
+</html>

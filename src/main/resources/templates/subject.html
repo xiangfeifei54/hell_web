@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>学科课程</title>
+</head>
+<body>
+<h3>专题课程</h3>
+<ul th:each="speCourse:${subject.getSpeCourses()}">
+    <li>
+        <a th:href="'https://fudao.qq.com/pc/course.html?course_id='+${speCourse.cid}">
+            <span th:text="${speCourse.gradeName}"></span> -
+            <span th:text="${speCourse.subjectName}"></span> -
+            <span th:text="${speCourse.name}"></span> -
+            <span th:text="'¥'+${speCourse.price}"></span>
+        </a>
+    </li>
+
+</ul>
+<h3>系统课程课程</h3>
+<ul th:each="course:${subject.getSysCoursePkgs()}">
+    <li>
+        <a th:href="'https://fudao.qq.com/subject/6001/subject_system/'+${course.getSubject_package_id()}">
+            <span th:text="${course.gradeName}"></span> -
+            <span th:text="${course.subjectName}"></span> -
+            <span th:text="${course.title}"></span> -
+            <span th:text="'¥'+${course.getDiscount_price()}"></span>
+        </a>
+    </li>
+
+</ul>
+</body>
+</html>
